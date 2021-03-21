@@ -1,0 +1,58 @@
+//
+//  ViewController.swift
+//  StanfordUniVideo1
+//
+//  Created by KAAN YİĞİT on 21.03.2021.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    var flipCount = 0 {
+        didSet
+        {
+            lblFlipCount.text = "Count = \(flipCount)"
+        }
+    }
+    
+    
+    @IBOutlet weak var lblFlipCount: UILabel!
+    
+
+    @IBOutlet var cardButtons: [UIButton]!
+    
+    var emojies = ["🔥","👀","🥶","🔥","🥶","💧","👀","💧"]
+    
+    @IBAction func touchCard(_ sender: UIButton) {
+        flipCount += 1
+        if let cardNumber = cardButtons.index(of: sender) {
+            flipCard(withEmoji: emojies[cardNumber], on: sender)
+        }else {
+            print("mevcut değil")
+        }
+        
+        
+        
+        
+    }
+
+    
+    
+    
+    func flipCard (withEmoji emoji : String ,on onButton : UIButton){
+        if onButton.currentTitle == emoji {
+            onButton.setTitle(" ", for: UIControl.State.normal)
+            onButton.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+        } else {
+            onButton.setTitle(emoji, for: UIControl.State.normal)
+            onButton.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        }
+    }
+    
+}
+
+
+
+
+
